@@ -33,7 +33,7 @@ estimateSkewT(minAge, maxAge, monoGroups, phy, shape = 50, scale = 1.5,
 
 \item{estimateScale}{logical specifying whether to estimate scale with a given shape value (default = TRUE)}
 
-\item{estimateShape}{logical specifying whether to estimate shape with a given scale value (default = TRUE)}
+\item{estimateShape}{logical specifying whether to estimate shape with a given scale value (default = FALSE)}
 
 \item{estimateMode}{logical speciftying whether to estimate the scale that produces probabilities of each tail that corresponds roughly to the values given by minProb (lower tail) and maxProb (upper tail)}
 
@@ -64,17 +64,20 @@ Estimate the shape, scale, and location paramaters of a Skew-t distribution and 
 \examples{
 data(apeData)
 attach(apeData)
-monophyleticGroups <- list()
-monophyleticGroups[[1]] <- c("human", "chimpanzee", "bonobo", 
-"gorilla", "sumatran", "orangutan", "gibbon")
-getMRCA(apeTree, c("human", "chimpanzee", "bonobo", "gorilla"))
-monophyleticGroups[[2]] <-  tipDes(apeTree, 10)
-monophyleticGroups[[3]] <- tipDes(apeTree, 11)
-monophyleticGroups[[4]] <- c("sumatran", "orangutan")
+## extract taxon descending from calibrated nodes 8, 10, 11, 13
+## these nodes can be visualised using plot.phylo
+## and nodelabels from ape
+monophyleticGroups <- tipDes(apeData$apeTree, c(8,10,11,13))
 minimumTimes <- c("nodeOne"=15, "nodeTwo"=6,
 "nodeThree"=8, "nodeFour"=13) / 10
 maximumTimes <- c("nodeOne" = 30, "nodeTwo" = 12,
 "nodeThree"=12, "nodeFour" = 20) / 10
 estimateSkewT(minAge=minimumTimes, maxAge=maximumTimes,
-monoGroups=monophyleticGroups, phy=apeTree, plot=FALSE)
+monoGroups=monophyleticGroups, phy=apeTree, plot=FALSE)$MCMCtree
+}
+\seealso{
+\code{\link[sn]{qst}}
+}
+\author{
+Mark Puttick
 }

@@ -17,7 +17,8 @@ MCMC.tree.plot(phy = NULL, analysis.type = "MCMCtree",
   tip.bar.col = "#ff000050", burn.in = 0.25,
   distribution.height = 0.8, abs.age.mgp = c(3, 0.35, 0),
   abs.age.lwd.ticks = 0.7, abs.age.lwd = 0, tck.abs.age = -0.01,
-  abs.age.line = -0.4, pos.age = NULL, n.runs = 2, ...)
+  abs.age.line = -0.4, pos.age = NULL, n.runs = 2,
+  ladderize.tree = TRUE, ...)
 }
 \arguments{
 \item{phy}{A timescaled phylogeny, unless analysis.type="MCMCtree" and build.tree=TRUE}
@@ -96,6 +97,8 @@ MCMC.tree.plot(phy = NULL, analysis.type = "MCMCtree",
 
 \item{n.runs}{For analysis.type mrbayes, the number of independent chains to summarise}
 
+\item{ladderize.tree}{Logical. Plot a ladderized tree (TRUE) or not (FALSE)}
+
 \item{...}{further arguments to be used in \code{\link[ape]{plot.phylo}}}
 }
 \value{
@@ -104,10 +107,22 @@ If plot=TRUE plot of distributions in file 'pdfOutput' written to current workin
 \description{
 Plot time-scaled phylogenies with node uncertainty and timescale
 }
+\details{
+The primary inputs for the 'method' options are outputs from analysis conducting using MCMCtree, MrBayes, RevBayes, or User.
+
+For analyses under the 'MCMCtree' option (the default) the function only requires a 'FigTree' output from MCMCtree analysis or the full MCMCtree posterior. For option "MrBayes" and "RevBayes", the method argument takes the user-supplied directory address in which all the output files are stored.
+
+For the option 'User' the function requires a full posterior distribution and time-scaled phylogeny. This function can take any posterior distribution, but it may require some manipulation. The argument node.ages in MCMC.tree.plot takes a named list containing the posterior ages for each node, with the name of each element corresponding to the node in the phylogeny.
+}
 \examples{
 data(MCMCtree.output)
 attach(MCMCtree.output)
-MCMCtree.file <- readMCMCtree(MCMCtree.phy, from.file=FALSE)
-MCMC.tree.plot(MCMCtree.file[[1]],  analysis.type="MCMCtree",
+## if it is necessary to read in file manually
+## MCMCtree.posterior <- read.csv("mcmc.posterior.file.directory", sep="\\t")
+MCMCtree.file <- readMCMCtree(MCMCtree.phy, from.file=FALSE)$apePhy
+MCMC.tree.plot(phy=MCMCtree.file,  analysis.type="MCMCtree",
 MCMC.chain=MCMCtree.posterior, plot.type="distributions", cex.tips=0.5)
+}
+\author{
+Mark Puttick
 }
