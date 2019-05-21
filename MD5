@@ -1,4 +1,4 @@
-4267dadd24321d4908696e9aaa8b79dd *DESCRIPTION
+9fd9b93ece0b8990f3326c9c5463b94c *DESCRIPTION
 7b9b0346a003ba6e42cdce3d00e911c5 *NAMESPACE
 c80705a197c116fc9f505af5d5875bef *R/MCMC.tree.plot.R
 2ba89c5b1fe36b21efdfea1b56eb0759 *R/MCMCPhyOneNode.R
@@ -28,10 +28,10 @@ e626374649ff2a400f6a6d66784de613 *data/MCMCtree.output.RData
 22c572f422daf0691f32652f64d70d6d *data/apeData.RData
 a2f04296e782ec8562662cd1dc1634e4 *inst/doc/MCMCtree.R
 9ec68e003d50d6a334fbd8a0eab31873 *inst/doc/MCMCtree.Rmd
-f707bd301193ff5f79e6d028e8bc1791 *inst/doc/MCMCtree.html
+5158f736f725226cff31722691e8c227 *inst/doc/MCMCtree.html
 64c28e23cf09f112201b4daf6ec3e929 *inst/doc/MCMCtree_plot.R
 9d24cac6a473ff92cbe6a9eee487c526 *inst/doc/MCMCtree_plot.Rmd
-fc6775b243fb846850c98b354d640fe2 *inst/doc/MCMCtree_plot.html
+0cacf2534a31e7eb4455e5bf6622d952 *inst/doc/MCMCtree_plot.html
 0df14bc2206bbe38cf53a2e286a14144 *man/MCMC.tree.plot.Rd
 e1325d48535efd1dfe38ee9532df2e75 *man/MCMCtree.output.Rd
 e271f56c2c9e86e6e0d8d924feb6acc7 *man/MCMCtreePhy.Rd
